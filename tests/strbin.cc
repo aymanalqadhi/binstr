@@ -1,4 +1,4 @@
-#include "strbin.hpp"
+#include "binstr.hpp"
 
 #include <iostream>
 #include <cassert>
