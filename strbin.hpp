@@ -1,9 +1,9 @@
-#ifndef LIB_STRBIN_H
-#define LIB_STRBIN_H
+#ifndef LIB_BINSTR_H
+#define LIB_BITSTR_H
 
-#include <iostream>
-#include <string>
+#include <cstddef>
 #include <cassert>
+#include <string>
 
 namespace binstr
 {
@@ -16,7 +16,7 @@ namespace binstr
   template<class T>
   const T ParseBinaryString(const std::string& str) noexcept
   {
-    assert(str.length() < sizeof(T) * 8);
+    assert(str.length() <= sizeof(T) * 8);
     T ret = 0;
 
     for (int i = str.length() - 1; i >= 0; --i) {
@@ -30,7 +30,7 @@ namespace binstr
   /**
    * A wrapper function for `ParseBinaryString` for 16bit integers.
    */
-  inline const std::uint16 ParseBinaryString16(const std::string& str) noexcept
+  inline const std::uint16_t ParseBinaryString16(const std::string& str) noexcept
   {
     return ParseBinaryString<std::uint16_t>(str);
   }
@@ -38,7 +38,7 @@ namespace binstr
   /**
    * A wrapper function for `ParseBinaryString` for 32bit integers.
    */
-  inline const std::uint32 ParseBinaryString32(const std::string& str) noexcept
+  inline const std::uint32_t ParseBinaryString32(const std::string& str) noexcept
   {
     return ParseBinaryString<std::uint32_t>(str);
   }
@@ -46,7 +46,7 @@ namespace binstr
   /**
    * A wrapper function for `ParseBinaryString` for 64bit integers.
    */
-  inline const std::uint64 ParseBinaryString64(const std::string& str) noexcept
+  inline const std::uint64_t ParseBinaryString64(const std::string& str) noexcept
   {
     return ParseBinaryString<std::uint64_t>(str);
   }
