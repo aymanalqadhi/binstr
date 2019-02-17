@@ -14,7 +14,7 @@ namespace binstr
    * @return The parsed value
    */
   template<class T>
-  T ParseBinaryString(const std::string& str) 
+  const T ParseBinaryString(const std::string& str) noexcept
   {
     assert(str.length() < sizeof(T) * 8);
     T ret = 0;
@@ -28,25 +28,28 @@ namespace binstr
   }
 
   /**
-   * A wrapper lambda for `ParseBinaryString` for 16bit integers.
+   * A wrapper function for `ParseBinaryString` for 16bit integers.
    */
-  auto ParseBinaryString16 = [](const std::string& str) -> std::uint16_t {
+  inline const std::uint16 ParseBinaryString16(const std::string& str) noexcept
+  {
     return ParseBinaryString<std::uint16_t>(str);
-  };
+  }
 
   /**
-   * A wrapper lambda for `ParseBinaryString` for 32bit integers.
+   * A wrapper function for `ParseBinaryString` for 32bit integers.
    */
-  auto ParseBinaryString32 = [](const std::string& str) -> std::uint32_t {
+  inline const std::uint32 ParseBinaryString32(const std::string& str) noexcept
+  {
     return ParseBinaryString<std::uint32_t>(str);
-  };
+  }
 
   /**
-   * A wrapper lambda for `ParseBinaryString` for 64bit integers.
+   * A wrapper function for `ParseBinaryString` for 64bit integers.
    */
-  auto ParseBinaryString64 = [](const std::string& str) -> std::uint64_t {
+  inline const std::uint64 ParseBinaryString64(const std::string& str) noexcept
+  {
     return ParseBinaryString<std::uint64_t>(str);
-  };
+  }
 
   /**
    * A Generic function to convert integer values into binary strings
@@ -55,7 +58,7 @@ namespace binstr
    * @return The converted binary string
    */
   template<class T>
-  std::string IntToBinString(T n)
+  const std::string IntToBinString(T n) noexcept
   {
     const static auto len = sizeof(n) * 8;
     char ret[len];
@@ -68,25 +71,25 @@ namespace binstr
   }
   
   /**
-   * A wrapper lambda for `IntToBinString` for 16bit integers.
+   * A wrapper function for `IntToBinString` for 16bit integers.
    */
-  auto Int16ToBinString = [](std::uint16_t n) -> std::string {
+  inline const std::string Int16ToBinString(std::uint16_t n) noexcept {
     return IntToBinString<std::uint16_t>(n);
-  };
+  }
 
   /**
-   * A wrapper lambda for `IntToBinString` for 32bit integers.
+   * A wrapper function for `IntToBinString` for 32bit integers.
    */
-  auto Int32ToBinString = [](std::uint32_t n) -> std::string {
+  inline const std::string Int32ToBinString(std::uint32_t n) noexcept {
     return IntToBinString<std::uint32_t>(n);
-  };
+  }
 
   /**
-   * A wrapper lambda for `IntToBinString` for 64bit integers.
+   * A wrapper function for `IntToBinString` for 64bit integers.
    */
-  auto Int64ToBinString = [](std::uint64_t n) -> std::string {
+  inline const std::string Int64ToBinString(std::uint64_t n) noexcept {
     return IntToBinString<std::uint64_t>(n);
-  };
+  }
 }
 
 #endif
